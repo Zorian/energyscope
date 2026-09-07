@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energyscope | Commercial Energy Monitoring & BMS Metering</title>
+<meta name="description" content="BMS energy metering, sub-metering and consumption monitoring for commercial buildings. Half-hourly data, MEES/EPC compliance and waste diagnostics. Integrates with Trend, Tridium, Honeywell, EcoStruxure and Metasys.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Who provides BMS energy monitoring for commercial buildings?","acceptedAnswer":{"@type":"Answer","text":"Energyscope sets up and maintains energy metering, sub-metering and consumption monitoring at the BMS level for commercial and industrial buildings across the UK, including MEES/EPC compliance reporting and energy waste diagnostics."}},
+    {"@type":"Question","name":"Why is my building using more energy than expected despite the BMS?","acceptedAnswer":{"@type":"Answer","text":"Usually out-of-hours plant running, a control loop hunting rather than settling, or schedules that were never updated after a change in building use. We trace the consumption data back to the cause."}},
+    {"@type":"Question","name":"What is sub-metering and do I need it for MEES/EPC compliance?","acceptedAnswer":{"@type":"Answer","text":"Sub-metering breaks total building consumption down by system or tenant. It supports MEES and EPC reporting by showing where energy is actually used, which is often required for larger commercial buildings and multi-let sites."}},
+    {"@type":"Question","name":"Can energy data be pulled directly from an existing BMS?","acceptedAnswer":{"@type":"Answer","text":"Yes. Most existing BMS platforms already hold meter and consumption points — we configure the head-end to log, trend and report that data rather than installing a parallel system."}},
+    {"@type":"Question","name":"How much does BMS energy monitoring setup cost?","acceptedAnswer":{"@type":"Answer","text":"Cost depends on the number of meters, whether new sub-metering is needed, and the existing BMS platform. We provide a fixed quote after a site survey."}},
+    {"@type":"Question","name":"Do you work with Trend, Tridium, Honeywell, Schneider or Johnson Controls?","acceptedAnswer":{"@type":"Answer","text":"Yes. We configure energy monitoring and metering on Trend, Tridium/Niagara, Honeywell, Schneider EcoStruxure and Johnson Controls Metasys, regardless of who installed the original system."}},
+    {"@type":"Question","name":"What is half-hourly consumption data and why does it matter?","acceptedAnswer":{"@type":"Answer","text":"Half-hourly data shows consumption in 30-minute blocks rather than a single monthly total, making it possible to spot out-of-hours running, demand spikes and equipment faults that a monthly bill would hide."}},
+    {"@type":"Question","name":"Can you diagnose energy waste from out-of-hours plant running?","acceptedAnswer":{"@type":"Answer","text":"Yes. We compare BMS schedules against actual half-hourly consumption to find plant still running outside occupied hours, then correct the schedule or control strategy causing it."}}
+  ]
+}
+</script>
+<style>
+  :root{
+    --bg:#F4F5F3;
+    --panel:#FFFFFF;
+    --ink:#101615;
+    --dim:#5B6462;
+    --teal:#177B6E;
+    --teal-dim:#0F5A50;
+    --amber:#D68A1D;
+    --line:rgba(16,22,21,0.13);
+    --line-soft:rgba(16,22,21,0.07);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk','Inter',sans-serif;
+    font-weight:600;
+    line-height:1.12;
+    margin:0;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'IBM Plex Mono','Courier New',monospace;}
+  a{color:inherit;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+  header{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:10;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;max-width:980px;margin:0 auto;padding-left:24px;padding-right:24px;}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;}
+  .brand .dot{color:var(--teal);}
+  .nav-links{display:flex;gap:28px;align-items:center;font-size:0.95rem;}
+  .nav-links a{text-decoration:none;color:var(--dim);}
+  .call-pill{background:var(--teal);color:#fff;padding:9px 18px;border-radius:2px;font-size:0.9rem;text-decoration:none;white-space:nowrap;}
+
+  .hero{padding:76px 0 56px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end;}
+  .eyebrow{color:var(--teal-dim);font-size:0.95rem;margin-bottom:18px;}
+  h1{font-size:2.5rem;max-width:17ch;}
+  .hero p.lead{max-width:50ch;font-size:1.1rem;margin-top:20px;color:var(--dim);}
+  .hero-actions{display:flex;gap:16px;margin-top:30px;flex-wrap:wrap;}
+  .btn-primary{background:var(--teal);color:#fff;padding:13px 24px;text-decoration:none;border-radius:2px;font-size:0.96rem;}
+  .btn-secondary{border:1px solid var(--ink);color:var(--ink);padding:12px 23px;text-decoration:none;border-radius:2px;font-size:0.96rem;}
+  .stat-card{background:var(--panel);border:1px solid var(--line);padding:28px;}
+  .stat-num{font-family:'IBM Plex Mono',monospace;font-size:2.6rem;color:var(--teal-dim);line-height:1;}
+  .stat-label{font-size:0.92rem;color:var(--dim);margin-top:10px;max-width:22ch;}
+
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;font-size:0.9rem;color:var(--dim);}
+  section{padding:68px 0;border-bottom:1px solid var(--line);}
+  .section-label{font-size:0.95rem;color:var(--teal-dim);margin-bottom:14px;}
+  h2{font-size:1.8rem;max-width:24ch;margin-bottom:36px;}
+
+  .symptom-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  .symptom{background:var(--panel);padding:26px;}
+  .symptom h3{font-size:1.02rem;margin-bottom:10px;font-weight:600;}
+  .symptom p{margin:0;color:var(--dim);font-size:0.95rem;}
+
+  .services{display:flex;flex-direction:column;}
+  .service-row{display:grid;grid-template-columns:1.2fr 2fr;gap:32px;padding:24px 0;border-top:1px solid var(--line-soft);}
+  .service-row:first-child{border-top:none;}
+  .service-row h3{font-size:1.08rem;color:var(--ink);}
+  .service-row p{margin:0;color:var(--dim);}
+
+  .faq-item{border-top:1px solid var(--line-soft);padding:22px 0;}
+  .faq-item:first-child{border-top:none;}
+  .faq-item h3{font-size:1.0rem;margin-bottom:10px;font-family:'Inter',sans-serif;font-weight:600;}
+  .faq-item p{margin:0;color:var(--dim);}
+
+  footer{padding:36px 0;font-size:0.9rem;color:var(--dim);}
+
+  @media(max-width:720px){
+    .hero{grid-template-columns:1fr;}
+    h1{font-size:2rem;}
+    .symptom-grid{grid-template-columns:1fr;}
+    .service-row{grid-template-columns:1fr;gap:8px;}
+    .nav-links{gap:16px;font-size:0.85rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">Energyscope<span class="dot">.</span></div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#faq">FAQ</a>
+      <a class="call-pill" href="tel:+442039000000">Call — 020 3900 0000</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="display:contents;">
+    <div>
+      <div class="eyebrow">Commercial Energy Monitoring & BMS Metering</div>
+      <h1>You can't fix what your BMS isn't showing you.</h1>
+      <p class="lead">Energy metering, sub-metering and half-hourly consumption monitoring — set up at the BMS level, so waste and compliance gaps show up before the bill does.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="tel:+442039000000">Call now — 020 3900 0000</a>
+        <a class="btn-secondary" href="#services">See our services</a>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">15–35%</div>
+      <div class="stat-label">Typical energy cost reduction once a BMS is properly monitored and tuned.</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">MEES / EPC Reporting &nbsp;·&nbsp; Half-Hourly Data &nbsp;·&nbsp; Trend, Tridium, Honeywell, EcoStruxure, Metasys</div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">Consumption not adding up?</div>
+    <h2>Bills climbing. Compliance data missing. No visibility by system.</h2>
+    <div class="symptom-grid">
+      <div class="symptom">
+        <h3>Energy Bills Higher Than Expected</h3>
+        <p>Out-of-hours plant running, a hunting control loop, or schedules that were never updated after a change in building use.</p>
+      </div>
+      <div class="symptom">
+        <h3>No Sub-Metering by System or Tenant</h3>
+        <p>Total consumption with no breakdown — making MEES/EPC reporting and tenant recharging guesswork.</p>
+      </div>
+      <div class="symptom">
+        <h3>Missing Half-Hourly Data</h3>
+        <p>Only monthly totals available, hiding the demand spikes and out-of-hours running that actually drive cost.</p>
+      </div>
+      <div class="symptom">
+        <h3>BMS Holding Data It Isn't Reporting</h3>
+        <p>Meter points already exist on the head-end but were never configured to log, trend or alert.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">What we set up & maintain</div>
+    <h2>Energy data, mapped, metered and reported.</h2>
+    <div class="services">
+      <div class="service-row">
+        <h3>Energy Metering & Sub-Metering Integration</h3>
+        <p>Wire and configure meter points into the BMS head-end, broken down by system, floor or tenant.</p>
+      </div>
+      <div class="service-row">
+        <h3>BMS Energy Dashboards & Reporting</h3>
+        <p>Trend logs, consumption dashboards and scheduled reports built directly from existing BMS data points.</p>
+      </div>
+      <div class="service-row">
+        <h3>MEES / EPC Compliance Monitoring</h3>
+        <p>Consumption and sub-metering data structured to support MEES and EPC reporting requirements.</p>
+      </div>
+      <div class="service-row">
+        <h3>Half-Hourly Consumption & Alarms</h3>
+        <p>30-minute interval data with alarms on demand spikes or consumption outside expected schedules.</p>
+      </div>
+      <div class="service-row">
+        <h3>Energy Waste Diagnostics</h3>
+        <p>Compare schedules against actual consumption to find out-of-hours running and hunting control loops.</p>
+      </div>
+      <div class="service-row">
+        <h3>Carbon & ESG Reporting Support</h3>
+        <p>Consumption data structured and exported to support carbon reporting and ESG disclosure requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-label">Common questions</div>
+    <h2>BMS energy monitoring, explained.</h2>
+
+    <div class="faq-item">
+      <h3>Who provides BMS energy monitoring for commercial buildings?</h3>
+      <p>Energyscope sets up and maintains energy metering, sub-metering and consumption monitoring at the BMS level for commercial and industrial buildings across the UK, including MEES/EPC compliance reporting and energy waste diagnostics.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why is my building using more energy than expected despite the BMS?</h3>
+      <p>Usually out-of-hours plant running, a control loop hunting rather than settling, or schedules that were never updated after a change in building use. We trace the consumption data back to the cause.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is sub-metering and do I need it for MEES/EPC compliance?</h3>
+      <p>Sub-metering breaks total building consumption down by system or tenant. It supports MEES and EPC reporting by showing where energy is actually used, which is often required for larger commercial buildings and multi-let sites.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can energy data be pulled directly from an existing BMS?</h3>
+      <p>Yes. Most existing BMS platforms already hold meter and consumption points — we configure the head-end to log, trend and report that data rather than installing a parallel system.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How much does BMS energy monitoring setup cost?</h3>
+      <p>Cost depends on the number of meters, whether new sub-metering is needed, and the existing BMS platform. We provide a fixed quote after a site survey.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do you work with Trend, Tridium, Honeywell, Schneider or Johnson Controls?</h3>
+      <p>Yes. We configure energy monitoring and metering on Trend, Tridium/Niagara, Honeywell, Schneider EcoStruxure and Johnson Controls Metasys, regardless of who installed the original system.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What is half-hourly consumption data and why does it matter?</h3>
+      <p>Half-hourly data shows consumption in 30-minute blocks rather than a single monthly total, making it possible to spot out-of-hours running, demand spikes and equipment faults that a monthly bill would hide.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can you diagnose energy waste from out-of-hours plant running?</h3>
+      <p>Yes. We compare BMS schedules against actual half-hourly consumption to find plant still running outside occupied hours, then correct the schedule or control strategy causing it.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 Energyscope<br>
+    hello@energyscope.co.uk · 020 3900 0000
+  </div>
+</footer>
+
+</body>
+</html>
