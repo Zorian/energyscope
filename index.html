@@ -21,6 +21,7 @@
   ]
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#F4F5F3;
@@ -62,7 +63,8 @@
   .nav-links a{text-decoration:none;color:var(--dim);}
   .call-pill{background:var(--teal);color:#fff;padding:9px 18px;border-radius:2px;font-size:0.9rem;text-decoration:none;white-space:nowrap;}
 
-  .hero{padding:76px 0 56px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end;}
+  .hero{padding:76px 0 56px;border-bottom:1px solid var(--line);}
+  .hero > .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end;}
   .eyebrow{color:var(--teal-dim);font-size:0.95rem;margin-bottom:18px;}
   h1{font-size:2.5rem;max-width:17ch;}
   .hero p.lead{max-width:50ch;font-size:1.1rem;margin-top:20px;color:var(--dim);}
@@ -97,7 +99,7 @@
   footer{padding:36px 0;font-size:0.9rem;color:var(--dim);}
 
   @media(max-width:720px){
-    .hero{grid-template-columns:1fr;}
+    .hero > .wrap{grid-template-columns:1fr;}
     h1{font-size:2rem;}
     .symptom-grid{grid-template-columns:1fr;}
     .service-row{grid-template-columns:1fr;gap:8px;}
@@ -106,6 +108,7 @@
 </style>
 
 <style id="callout-css">
+  .nav-links a.call-pill{color:var(--pill-ink,#fff);}
   @media(max-width:640px){.nav-links a:not(.call-pill){display:none;}.call-pill{padding:8px 12px;font-size:0.82rem;}.brand{font-size:1.1rem;}}
   #callout{--c-panel:#FFFFFF;--c-field:#F4F5F3;--c-ink:#101615;--c-dim:#5B6462;--c-accent:#177B6E;--c-accent-ink:#FFFFFF;--c-line:rgba(16,22,21,0.16);--c-focus:#D68A1D;}
   #callout .co-grid{display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.4fr);gap:56px;align-items:start;}
@@ -163,7 +166,7 @@
 </header>
 
 <section class="hero">
-  <div class="wrap" style="display:contents;">
+  <div class="wrap">
     <div>
       <div class="eyebrow">Commercial Energy Monitoring & BMS Metering</div>
       <h1>You can't fix what your BMS isn't showing you.</h1>
