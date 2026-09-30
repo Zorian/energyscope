@@ -161,7 +161,7 @@
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#faq">FAQ</a>
-      <a class="call-pill" href="tel:+442039000000">Call — 020 3900 0000</a>
+      <a class="call-pill" href="tel:+442080648943">Call — 020 8064 8943</a>
     </div>
   </div>
 </header>
@@ -173,7 +173,7 @@
       <h1>You can't fix what your BMS isn't showing you.</h1>
       <p class="lead">Energy metering, sub-metering and half-hourly consumption monitoring — set up at the BMS level, so waste and compliance gaps show up before the bill does.</p>
       <div class="hero-actions">
-        <a class="btn-primary" href="tel:+442039000000">Call now — 020 3900 0000</a>
+        <a class="btn-primary" href="tel:+442080648943">Call now — 020 8064 8943</a>
         <a class="btn-secondary" href="#callout">Request a callback</a>
       </div>
     </div>
@@ -299,7 +299,7 @@
           <li><div><strong>You get a fixed quote</strong>Agreed with you before any work starts.</div></li>
         </ol>
         <p class="co-promise">We call you back the same working day.</p>
-        <a class="co-call" href="tel:+442039000000">Prefer to talk? Call 020 3900 0000</a>
+        <a class="co-call" href="tel:+442080648943">Prefer to talk? Call 020 8064 8943</a>
       </div>
       <div id="co-wrap">
         <form name="energyscoped-enquiry" method="POST" data-netlify="true" netlify-honeypot="company-website" enctype="multipart/form-data" action="https://energyscoped.netlify.app/" id="co-form">
@@ -351,7 +351,7 @@
 <footer>
   <div class="wrap">
     © 2026 Energyscoped<br>
-    020 3900 0000
+    020 8064 8943
   </div>
 </footer>
 
@@ -360,14 +360,14 @@
 (function(){
   var f=document.getElementById('co-form');if(!f)return;
   var wrap=document.getElementById('co-wrap');
-  function done(){wrap.innerHTML='<div class="co-done" role="status" tabindex="-1"><h3>Request received</h3><p>An engineer will call you back shortly. For anything urgent in the meantime, call 020 3900 0000.</p></div>';wrap.firstChild.focus();}
+  function done(){wrap.innerHTML='<div class="co-done" role="status" tabindex="-1"><h3>Request received</h3><p>An engineer will call you back shortly. For anything urgent in the meantime, call 020 8064 8943.</p></div>';wrap.firstChild.focus();}
   if(location.search.indexOf('sent=1')>-1){done();return;}
   f.addEventListener('submit',function(e){
     e.preventDefault();var b=f.querySelector('.co-submit');b.disabled=true;b.textContent='Sending...';
     var old=f.querySelector('.co-err');if(old)old.remove();
     fetch('https://energyscoped.netlify.app/',{method:'POST',mode:'no-cors',body:new FormData(f)}).then(function(){done();}).catch(function(){
       b.disabled=false;b.textContent='Request a callback';
-      var p=document.createElement('p');p.className='co-err';p.textContent='That didn\'t send. Check your connection and try again, or call 020 3900 0000.';f.appendChild(p);
+      var p=document.createElement('p');p.className='co-err';p.textContent='That didn\'t send. Check your connection and try again, or call 020 8064 8943.';f.appendChild(p);
     });
   });
 })();
